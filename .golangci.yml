@@ -32,11 +32,11 @@ linters:
     - wrapcheck
 linters-settings:
   goimports:
-    local-prefixes: github.com/travix/goterraform
+    local-prefixes: github.com/travix/gotf
   gci:
     sections:
       - standard # Standard section: captures all standard packages.
       - default # Default section: contains all imports that could not be matched to another section type.
       - dot
-      - prefix(github.com/travix/goterraform) # local packages.
+      - prefix(github.com/travix/gotf) # local packages.
     custom-order: true

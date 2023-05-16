@@ -1,4 +1,4 @@
-module github.com/travix/goterraform
+module github.com/travix/gotf
 
 go 1.20
 
