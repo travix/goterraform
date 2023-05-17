@@ -4,14 +4,23 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"google.golang.org/grpc"
 )
 
 type Provider interface {
-	Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse, data any)
 	DataSources(ctx context.Context) []func() datasource.DataSource
 	Resources(ctx context.Context) []func() resource.Resource
+}
+
+type CanConfigureGrpc interface {
+	ConfigureGrpc(ctx context.Context, data any) (grpc.ClientConnInterface, diag.Diagnostics)
+}
+
+type CanConfigure interface {
+	Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse)
 }
 
 type CanConfigValidators interface {
