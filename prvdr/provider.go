@@ -15,8 +15,8 @@ type Provider interface {
 	Resources(ctx context.Context) []func() resource.Resource
 }
 
-type CanConfigureGrpc interface {
-	ConfigureGrpc(ctx context.Context, data any) (grpc.ClientConnInterface, diag.Diagnostics)
+type CanConfigureGrpc[T any] interface {
+	ConfigureGrpc(ctx context.Context, data T) (grpc.ClientConnInterface, diag.Diagnostics)
 }
 
 type CanConfigure interface {

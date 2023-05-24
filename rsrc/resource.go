@@ -8,11 +8,11 @@ import (
 )
 
 // Resource required functions on resource.
-type Resource interface {
-	Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse, data any) diag.Diagnostics
-	Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse, data any) diag.Diagnostics
-	Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse, data any) diag.Diagnostics
-	Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse, data any) diag.Diagnostics
+type Resource[T any] interface {
+	Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse, data T) (T, diag.Diagnostics)
+	Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse, data T) (T, diag.Diagnostics)
+	Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse, data T) (T, diag.Diagnostics)
+	Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse, data T) diag.Diagnostics
 }
 
 type CanMetadata interface {

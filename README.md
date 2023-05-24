@@ -1,4 +1,4 @@
-# GoTerraform
+# GoTF
 
 Go module to help implement Terraform provider methods. Used by [protoc-gen-goterraform].
 

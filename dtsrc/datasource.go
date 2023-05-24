@@ -8,8 +8,8 @@ import (
 )
 
 // Datasource required functions on datasource.
-type Datasource interface {
-	Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse, data any) diag.Diagnostics
+type Datasource[T any] interface {
+	Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse, data T) (T, diag.Diagnostics)
 }
 
 type CanMetadata interface {
